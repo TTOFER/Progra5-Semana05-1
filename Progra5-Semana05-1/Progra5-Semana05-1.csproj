@@ -142,6 +142,7 @@
     <Content Include="Default.aspx" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
+    <Content Include="Pages\EjemploGit.aspx" />
     <Content Include="Pages\Error.aspx" />
     <Content Include="Pages\ExitoAgregarUsuario.aspx" />
     <Content Include="Pages\ExitoEliminarUsuario.aspx" />
@@ -270,6 +271,13 @@
     </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\EjemploGit.aspx.cs">
+      <DependentUpon>EjemploGit.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\EjemploGit.aspx.designer.cs">
+      <DependentUpon>EjemploGit.aspx</DependentUpon>
     </Compile>
     <Compile Include="Pages\Error.aspx.cs">
       <DependentUpon>Error.aspx</DependentUpon>
