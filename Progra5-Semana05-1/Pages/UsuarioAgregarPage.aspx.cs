@@ -12,7 +12,60 @@ namespace Progra5_Semana05_1.Pages
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (!Page.IsPostBack)
+            {
+                LlenarListaRolesUsuario();
+            } 
+        }
 
+        //Bloque de código con funcionalidad determinada
+        //se encapsula en su propia función o método
+        //para llenar dropdownlist lo vamos a incluir en un método
+
+        private void LlenarListaRolesUsuario()
+        {
+            try
+            {
+                //lista que almacenará los datos del SP
+                //para luego usarla en el dropdownlist
+                var ListaRolesUsuario = new List<ListItem>();
+
+                using (Progra5_Ejemplo1Entities1 db = new Progra5_Ejemplo1Entities1())
+                {
+                    //vamos a usar un linq para invocar al SP
+                    //y asignar valores para que funcione el dropdownlist
+
+                    //LINQ para consultas
+                    //los clásico SELECT FROM de BD
+
+                    var query = (from lr in db.SPUsuarioRolListar()
+                                 select new ListItem
+                                 {
+                                     Value = lr.id.ToString(),
+                                     Text = lr.descrip
+                                 }
+                                 ).ToList();
+                    
+                    //incorporar cada posible resultado a la variable
+                    //que usamos para el datasource del dropdownlist
+                    ListaRolesUsuario.AddRange( query );
+
+                    //y ahora hacer el binding entre la lista el ddl
+                    DdlRolesUsuario.DataTextField = "Text";
+                    DdlRolesUsuario.DataValueField = "Value";
+
+                    DdlRolesUsuario.DataSource = ListaRolesUsuario;
+                    DdlRolesUsuario.DataBind();
+
+                    DdlRolesUsuario.ClearSelection();
+
+                }
+            }
+            catch (Exception)
+            {
+
+                Response.Redirect("Error.aspx");
+            }
         }
 
         protected void BtnAgregar_Click(object sender, EventArgs e)
@@ -24,14 +77,14 @@ namespace Progra5_Semana05_1.Pages
             string telefono = TxtTelefono.Text.Trim();
             string contrasennia = TxtContrasennia.Text.Trim();
 
-            //en este ejemplo será opcional
-            //TO-DO: dar funcionalidad al combo para seleccionar el Rol
+            int idrol = Convert.ToInt32(DdlRolesUsuario.SelectedItem.Value);
+            
 
             try
             {
                 using (Progra5_Ejemplo1Entities1 db = new Progra5_Ejemplo1Entities1())
                 {
-                    db.SPUsuarioAgregar(nombre, email, telefono, contrasennia, 2);
+                    db.SPUsuarioAgregar(nombre, email, telefono, contrasennia, idrol);
                 }
             }
             catch (Exception)

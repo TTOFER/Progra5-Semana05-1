@@ -14,30 +14,89 @@ namespace Progra5_Semana05_1.Pages
         {
             if (IsPostBack == false)
             {
-                int idUsuario = Convert.ToInt32(Request.QueryString["id"]);
-                TxtUsuarioID.Text = idUsuario.ToString();
 
-                try
-                {
-                    using (Progra5_Ejemplo1Entities1 db = new Progra5_Ejemplo1Entities1())
-                    {
-                        var datosUsuario = db.SPUsuarioConsultarPorID(idUsuario).FirstOrDefault();
+                CargarInformacionDeUsuario();
 
-                        if(datosUsuario != null )
-                        {
-                            TxtNombre.Text = datosUsuario.Nombre;
-                            TxtTelefono.Text = datosUsuario.Telefono;
-                            TxtEmail.Text = datosUsuario.Email;
-                        }
-                    }
-                }
-                catch (Exception)
-                {
-                    Response.Redirect("Error.aspx");
-                }
+                LlenarListaRolesUsuario();
+
             }
         }
 
+        private void CargarInformacionDeUsuario()
+        {
+            int idUsuario = Convert.ToInt32(Request.QueryString["id"]);
+            TxtUsuarioID.Text = idUsuario.ToString();
+
+            try
+            {
+                using (Progra5_Ejemplo1Entities1 db = new Progra5_Ejemplo1Entities1())
+                {
+                    var datosUsuario = db.SPUsuarioConsultarPorID(idUsuario).FirstOrDefault();
+
+                    if (datosUsuario != null)
+                    {
+                        TxtNombre.Text = datosUsuario.Nombre;
+                        TxtTelefono.Text = datosUsuario.Telefono;
+                        TxtEmail.Text = datosUsuario.Email;
+
+                        //seleccionar rol que tiene el usuario actualmente
+                        string idrol = datosUsuario.UsuarioRolID.ToString();
+
+                        DdlRolesUsuario.Items.FindByValue(idrol).Selected = true;
+                    }
+                }
+            }
+            catch (Exception)
+            {
+                Response.Redirect("Error.aspx");
+            }
+        }
+
+        private void LlenarListaRolesUsuario()
+        {
+            try
+            {
+                //lista que almacenará los datos del SP
+                //para luego usarla en el dropdownlist
+                var ListaRolesUsuario = new List<ListItem>();
+
+                using (Progra5_Ejemplo1Entities1 db = new Progra5_Ejemplo1Entities1())
+                {
+                    //vamos a usar un linq para invocar al SP
+                    //y asignar valores para que funcione el dropdownlist
+
+                    //LINQ para consultas
+                    //los clásico SELECT FROM de BD
+
+                    var query = (from lr in db.SPUsuarioRolListar()
+                                 select new ListItem
+                                 {
+                                     Value = lr.id.ToString(),
+                                     Text = lr.descrip
+                                 }
+                                 ).ToList();
+
+                    //incorporar cada posible resultado a la variable
+                    //que usamos para el datasource del dropdownlist
+                    ListaRolesUsuario.AddRange(query);
+
+                    //y ahora hacer el binding entre la lista el ddl
+                    DdlRolesUsuario.DataTextField = "Text";
+                    DdlRolesUsuario.DataValueField = "Value";
+
+                    DdlRolesUsuario.DataSource = ListaRolesUsuario;
+                    DdlRolesUsuario.DataBind();
+
+                    //DdlRolesUsuario.ClearSelection();
+
+                }
+            }
+            catch (Exception)
+            {
+
+                Response.Redirect("Error.aspx");
+            }
+        }
         protected void BtnModificar_Click(object sender, EventArgs e)
         {
             try
@@ -51,8 +110,10 @@ namespace Progra5_Semana05_1.Pages
                 //string contrasennia = string.Empty;
                 string contrasennia = "";
 
+                int idrol = Convert.ToInt32(DdlRolesUsuario.SelectedItem.Value);
+
                 // esto valida que se haya digitado info en el txt
-                if( !string.IsNullOrEmpty(TxtContrasennia.Text.Trim()))
+                if (!string.IsNullOrEmpty(TxtContrasennia.Text.Trim()))
                 {
                     contrasennia = TxtContrasennia.Text.Trim();
                 }
@@ -60,7 +121,7 @@ namespace Progra5_Semana05_1.Pages
                 //llamamos al sp de modicar usuario
                 using (Progra5_Ejemplo1Entities1 db = new Progra5_Ejemplo1Entities1())
                 {
-                    db.SPUsuarioModificar(idUsuario, nombre, email, telefono, contrasennia);
+                    db.SPUsuarioModificar(idUsuario, nombre, email, telefono, contrasennia, idrol);
 
                 }
 
