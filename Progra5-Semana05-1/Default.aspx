@@ -4,12 +4,12 @@
 
     <main>
         <section class="row" aria-labelledby="aspnetTitle">
-            <h1 id="aspnetTitle">ASP.NET</h1>
-            <p class="lead">ASP.NET is a free web framework for building great Web sites and Web applications using HTML, CSS, and JavaScript.</p>
-            <p><a href="http://www.asp.net" class="btn btn-primary btn-md">Learn more &raquo;</a></p>
+            <h1 id="aspnetTitle">Proyecto de Clase - Progra 5</h1>
+            <p class="lead">Proyecto creado con ASP.NET</p>
+            <p><a href="Pages/Semana05Page.aspx" class="btn btn-primary btn-md">Ir al proyecto &raquo;</a></p>
         </section>
 
-        <div class="row">
+        <%--<div class="row">
             <section class="col-md-4" aria-labelledby="gettingStartedTitle">
                 <h2 id="gettingStartedTitle">Getting started</h2>
                 <p>
@@ -38,7 +38,7 @@
                     <a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301950">Learn more &raquo;</a>
                 </p>
             </section>
-        </div>
+        </div>--%>
     </main>
 
 </asp:Content>

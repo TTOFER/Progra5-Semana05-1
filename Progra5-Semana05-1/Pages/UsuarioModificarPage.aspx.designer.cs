@@ -24,40 +24,40 @@ namespace Progra5_Semana05_1.Pages
         protected global::System.Web.UI.WebControls.TextBox TxtUsuarioID;
 
         /// <summary>
-        /// TxtNombre control.
+        /// TxtNombreUsuario control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TxtNombre;
+        protected global::System.Web.UI.WebControls.TextBox TxtNombreUsuario;
 
         /// <summary>
-        /// TxtEmail control.
+        /// TxtEmailUsuario control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TxtEmail;
+        protected global::System.Web.UI.WebControls.TextBox TxtEmailUsuario;
 
         /// <summary>
-        /// TxtTelefono control.
+        /// TxtTelefonoUsuario control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TxtTelefono;
+        protected global::System.Web.UI.WebControls.TextBox TxtTelefonoUsuario;
 
         /// <summary>
-        /// TxtContrasennia control.
+        /// TxtContrasenniaUsuario control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TxtContrasennia;
+        protected global::System.Web.UI.WebControls.TextBox TxtContrasenniaUsuario;
 
         /// <summary>
         /// DdlRolesUsuario control.
@@ -69,21 +69,21 @@ namespace Progra5_Semana05_1.Pages
         protected global::System.Web.UI.WebControls.DropDownList DdlRolesUsuario;
 
         /// <summary>
-        /// BtnModificar control.
+        /// BtnModificarUsuario control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button BtnModificar;
+        protected global::System.Web.UI.WebControls.Button BtnModificarUsuario;
 
         /// <summary>
-        /// BtnEliminar control.
+        /// BtnEliminarUsuario control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button BtnEliminar;
+        protected global::System.Web.UI.WebControls.Button BtnEliminarUsuario;
     }
 }

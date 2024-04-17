@@ -13,22 +13,22 @@
 
         <div>
             <span>Nombre Usuario</span>
-            <asp:TextBox ID="TxtNombre" runat="server" CssClass="form-control"></asp:TextBox>
+            <asp:TextBox ID="TxtNombreUsuario" runat="server" CssClass="form-control"></asp:TextBox>
         </div>
 
         <div>
             <span>Correo Electrónico</span>
-            <asp:TextBox ID="TxtEmail" runat="server" CssClass="form-control"></asp:TextBox>
+            <asp:TextBox ID="TxtEmailUsuario" runat="server" CssClass="form-control"></asp:TextBox>
         </div>
 
         <div>
             <span>Teléfono Usuario</span>
-            <asp:TextBox ID="TxtTelefono" runat="server" CssClass="form-control"></asp:TextBox>
+            <asp:TextBox ID="TxtTelefonoUsuario" runat="server" CssClass="form-control"></asp:TextBox>
         </div>
 
         <div>
             <span>Contraseña (Opcional)</span>
-            <asp:TextBox ID="TxtContrasennia" runat="server" CssClass="form-control"></asp:TextBox>
+            <asp:TextBox ID="TxtContrasenniaUsuario" runat="server" CssClass="form-control"></asp:TextBox>
         </div>
 
         <div>
@@ -37,9 +37,9 @@
         </div>
 
         <div>
-            <asp:Button ID="BtnModificar" runat="server" Text="MODIFICAR USUARIO" CssClass="btn btn-primary" OnClick="BtnModificar_Click" />
+            <asp:Button ID="BtnModificarUsuario" runat="server" Text="MODIFICAR USUARIO" CssClass="btn btn-primary" OnClick="BtnModificarUsuario_Click" />
 
-            <asp:Button ID="BtnEliminar" runat="server" Text="ELIMINAR USUARIO" CssClass="btn btn-primary" OnClick="BtnEliminar_Click" />
+            <asp:Button ID="BtnEliminarUsuario" runat="server" Text="ELIMINAR USUARIO" CssClass="btn btn-primary" OnClick="BtnEliminarUsuario_Click" />
         </div>
 
         <div>

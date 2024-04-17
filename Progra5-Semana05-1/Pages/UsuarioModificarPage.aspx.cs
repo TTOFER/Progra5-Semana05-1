@@ -14,10 +14,9 @@ namespace Progra5_Semana05_1.Pages
         {
             if (IsPostBack == false)
             {
+                LlenarListaRolesUsuario();
 
                 CargarInformacionDeUsuario();
-
-                LlenarListaRolesUsuario();
 
             }
         }
@@ -35,9 +34,9 @@ namespace Progra5_Semana05_1.Pages
 
                     if (datosUsuario != null)
                     {
-                        TxtNombre.Text = datosUsuario.Nombre;
-                        TxtTelefono.Text = datosUsuario.Telefono;
-                        TxtEmail.Text = datosUsuario.Email;
+                        TxtNombreUsuario.Text = datosUsuario.Nombre;
+                        TxtTelefonoUsuario.Text = datosUsuario.Telefono;
+                        TxtEmailUsuario.Text = datosUsuario.Email;
 
                         //seleccionar rol que tiene el usuario actualmente
                         string idrol = datosUsuario.UsuarioRolID.ToString();
@@ -93,19 +92,20 @@ namespace Progra5_Semana05_1.Pages
             }
             catch (Exception)
             {
-
                 Response.Redirect("Error.aspx");
             }
         }
-        protected void BtnModificar_Click(object sender, EventArgs e)
+
+
+        protected void BtnModificarUsuario_Click(object sender, EventArgs e)
         {
             try
             {
 
                 int idUsuario = Convert.ToInt32(TxtUsuarioID.Text.Trim());
-                string nombre = TxtNombre.Text.Trim();
-                string email = TxtEmail.Text.Trim();
-                string telefono = TxtEmail.Text.Trim();
+                string nombre = TxtNombreUsuario.Text.Trim();
+                string email = TxtEmailUsuario.Text.Trim();
+                string telefono = TxtTelefonoUsuario.Text.Trim();
 
                 //string contrasennia = string.Empty;
                 string contrasennia = "";
@@ -113,16 +113,15 @@ namespace Progra5_Semana05_1.Pages
                 int idrol = Convert.ToInt32(DdlRolesUsuario.SelectedItem.Value);
 
                 // esto valida que se haya digitado info en el txt
-                if (!string.IsNullOrEmpty(TxtContrasennia.Text.Trim()))
+                if (!string.IsNullOrEmpty(TxtContrasenniaUsuario.Text.Trim()))
                 {
-                    contrasennia = TxtContrasennia.Text.Trim();
+                    contrasennia = TxtContrasenniaUsuario.Text.Trim();
                 }
 
                 //llamamos al sp de modicar usuario
                 using (Progra5_Ejemplo1Entities1 db = new Progra5_Ejemplo1Entities1())
                 {
                     db.SPUsuarioModificar(idUsuario, nombre, email, telefono, contrasennia, idrol);
-
                 }
 
             }
@@ -134,7 +133,7 @@ namespace Progra5_Semana05_1.Pages
             Response.Redirect("ExitoModificarUsuario.aspx");
         }
 
-        protected void BtnEliminar_Click(object sender, EventArgs e)
+        protected void BtnEliminarUsuario_Click(object sender, EventArgs e)
         {
             try
             {

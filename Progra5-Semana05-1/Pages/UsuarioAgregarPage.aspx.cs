@@ -63,7 +63,6 @@ namespace Progra5_Semana05_1.Pages
             }
             catch (Exception)
             {
-
                 Response.Redirect("Error.aspx");
             }
         }
